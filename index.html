@@ -35,6 +35,10 @@
             font-size: 22px;
             font-weight: bold;
             padding: 20px;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
         .userinfo {
             background: #fff;
@@ -151,7 +155,9 @@ function calculateScore() {
     let percentage = Math.round((score / total) * 100);
 
     document.getElementById("result").innerHTML =
-        `Ваш результат: <b>${percentage}%</b>`;
+        `ФИО: <b>${fio}</b><br>
+         Группа: <b>${group}</b><br><br>
+         Ваш результат: <b>${percentage}%</b>`;
 }
 </script>
 
