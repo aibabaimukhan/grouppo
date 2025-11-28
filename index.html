@@ -1,165 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест по Microsoft Word</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .question { 
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background: #0066ff;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #004ccc;
-        }
-        #result {
-            font-size: 22px;
-            font-weight: bold;
-            padding: 20px;
-            margin-top: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        .userinfo {
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        input {
-            padding: 8px;
-            width: 100%;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Квиз: Microsoft Word — 30 вопросов</title>
+  <style>
+    :root{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+    body{max-width:980px;margin:28px auto;padding:20px;background:#f7f8fb;color:#111}
+    h1{font-size:24px;margin:0 0 8px}
+    p.lead{margin:0 0 18px;color:#333}
+    .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(20,20,40,0.06);margin-bottom:14px}
+    .question{margin-bottom:12px}
+    .q-title{font-weight:600;margin-bottom:8px}
+    label.option{display:block;padding:8px;border-radius:8px;border:1px solid transparent;margin-bottom:6px;cursor:pointer}
+    input[type=radio]{margin-right:10px}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+    button{background:#0b5fff;color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+    button.secondary{background:#6b7280}
+    #result{padding:12px;margin-top:12px;border-radius:8px}
+    .correct{background:#ecfdf5;border:1px solid #bbf7d0}
+    .wrong{background:#fff1f2;border:1px solid #fecaca}
+    .explain{margin-top:6px;font-size:13px;color:#333}
+    footer{margin-top:18px;color:#666;font-size:13px}
+    .small{font-size:13px;color:#444}
+  </style>
 </head>
 <body>
+    <div class="userinfo">
+        <h2>Введите ваши данные</h2>
+        <label>ФИО:<br><input type="text" id="fio" placeholder="Ваше ФИО"></label><br><br>
+        <label>Группа:<br><input type="text" id="group" placeholder="Ваша группа"></label><br><br>
+        <hr>
+    </div>
+  <h1>Квиз: Microsoft Word — 30 вопросов</h1>
+  <p class="lead">Выбери один вариант ответа для каждого вопроса. Нажми "Проверить" чтобы получить результат и увидеть правильные ответы.</p>
 
-<h2>Тест по Microsoft Word (30 вопросов)</h2>
+  <form id="quiz">
 
-<div class="userinfo">
-    <label>ФИО:</label>
-    <input type="text" id="fio">
+  <!-- Questions -->
 
-    <label>Группа:</label>
-    <input type="text" id="group">
-</div>
+  <!-- We'll generate 30 question blocks here -->
 
-<form id="quizForm">
+  <div class="card question" data-q="1">
+    <div class="q-title">1. Какой формат является основным для Word?</div>
+    <label class="option"><input type="radio" name="q1" value="A"> A. .doc</label>
+    <label class="option"><input type="radio" name="q1" value="B"> B. .docx</label>
+    <label class="option"><input type="radio" name="q1" value="C"> C. .txt</label>
+    <label class="option"><input type="radio" name="q1" value="D"> D. .rtf</label>
+  </div>
 
-    <div id="questions"></div>
+  <div class="card question" data-q="2">
+    <div class="q-title">2. Как называется главная панель инструментов сверху?</div>
+    <label class="option"><input type="radio" name="q2" value="A"> A. Меню задач</label>
+    <label class="option"><input type="radio" name="q2" value="B"> B. Лента</label>
+    <label class="option"><input type="radio" name="q2" value="C"> C. Панель управления</label>
+    <label class="option"><input type="radio" name="q2" value="D"> D. Панель форматирования</label>
+  </div>
 
-    <button type="button" onclick="calculateScore()">Отправить</button>
-</form>
+  <div class="card question" data-q="3">
+    <div class="q-title">3. Сочетание клавиш для сохранения документа:</div>
+    <label class="option"><input type="radio" name="q3" value="A"> A. Ctrl + P</label>
+    <label class="option"><input type="radio"name="q3" value="B"> B. Ctrl + S</label>
+    <label class="option"><input type="radio" name="q3" value="C"> C. Ctrl + Z</label>
+    <label class="option"><input type="radio" name="q3" value="D"> D. Ctrl + A</label>
+  </div>
 
-<div id="result"></div>
+  <div class="card question" data-q="4">
+    <div class="q-title">4. Что делает Ctrl + Z?</div>
+    <label class="option"><input type="radio" name="q4" value="A"> A. Повтор</label>
+    <label class="option"><input type="radio" name="q4" value="B"> B. Отмена действия</label>
+    <label class="option"><input type="radio" name="q4" value="C"> C. Сохранение</label>
+    <label class="option"><input type="radio" name="q4" value="D"> D. Вставка</label>
+  </div>
 
-<script>
-const questionsData = [
-    { q: "1. Какой формат файла является стандартным для Word?", a: ["DOC", "DOCX", "TXT", "RTF"], c: 1 },
-    { q: "2. Какая комбинация клавиш отвечает за копирование?", a: ["Ctrl+V", "Ctrl+C", "Ctrl+X", "Ctrl+Z"], c: 1 },
-    { q: "3. Какая вкладка используется для изменения шрифта?", a: ["Главная", "Вставка", "Разметка страницы", "Рецензирование"], c: 0 },
-    { q: "4. Что делает команду Ctrl+Z?", a: ["Повтор", "Отмена", "Вставка", "Удаление"], c: 1 },
-    { q: "5. Где в Word можно включить нумерацию страниц?", a: ["Главная", "Вставка", "Вид", "Разметка страницы"], c: 1 },
+  <div class="card question" data-q="5">
+    <div class="q-title">5. Где находятся настройки шрифта?</div>
+    <label class="option"><input type="radio" name="q5" value="A"> A. Главная → Шрифт</label>
+    <label class="option"><input type="radio" name="q5" value="B"> B. Вставка → Шрифт</label>
+    <label class="option"><input type="radio" name="q5" value="C"> C. Файл → Правка</label>
+    <label class="option"><input type="radio" name="q5" value="D"> D. Вид → Интерфейс</label>
+  </div>
 
-    { q: "6. Как называется панель вверху Word?", a: ["Меню задач", "Лента", "Панель файла", "Командная строка"], c: 1 },
-    { q: "7. Как вставить таблицу?", a: ["Главная", "Вставка → Таблица", "Вставка → Рисунок", "Разметка → Сетка"], c: 1 },
-    { q: "8. Что делает функция 'междустрочный интервал'?", a: ["Меняет шрифт", "Меняет расстояние между строками", "Меняет стиль", "Меняет поля"], c: 1 },
-    { q: "9. Как сохранить документ?", a: ["Ctrl+P", "Ctrl+S", "Ctrl+O", "Ctrl+Shift+S"], c: 1 },
-    { q: "10. Где включить проверку орфографии?", a: ["Главная", "Рецензирование", "Вставка", "Вид"], c: 1 },
+  <div class="card question" data-q="6">
+    <div class="q-title">6. Как быстро выделить весь текст?</div>
+    <label class="option"><input type="radio" name="q6" value="A"> A. Ctrl + A</label>
+    <label class="option"><input type="radio" name="q6" value="B"> B. Ctrl + X</label>
+    <label class="option"><input type="radio" name="q6" value="C"> C. Ctrl + C</label>
+    <label class="option"><input type="radio" name="q6" value="D"> D. Ctrl + V</label>
+  </div>
 
-    { q: "11. Какая функция отвечает за выравнивание текста?", a: ["Главная → Абзац", "Рецензирование", "Файл", "Вставка"], c: 0 },
-    { q: "12. Как вставить изображение?", a: ["Главная", "Вставка → Рисунки", "Вид", "Ссылки"], c: 1 },
-    { q: "13. Как выделить весь текст?", a: ["Ctrl+A", "Ctrl+Shift+X", "Ctrl+Alt+T", "Ctrl+Q"], c: 0 },
-    { q: "14. Где находятся стили текста?", a: ["Главная", "Разметка", "Ссылки", "Рецензирование"], c: 0 },
-    { q: "15. Какая кнопка отвечает за жирный шрифт?", a: ["B", "I", "U", "S"], c: 0 },
+  <div class="card question" data-q="7">
+    <div class="q-title">7. Как вставить таблицу?</div>
+    <label class="option"><input type="radio" name="q7" value="A"> A. Главная → Таблица</label>
+    <label class="option"><input type="radio" name="q7" value="B"> B. Вставка → Таблица</label>
+    <label class="option"><input type="radio" name="q7" value="C"> C. Макет → Таблица</label>
+    <label class="option"><input type="radio" name="q7" value="D"> D. Вид → Таблица</label>
+  </div>
 
-    { q: "16. Что делает Ctrl+V?", a: ["Вставляет", "Копирует", "Удаляет", "Отменяет"], c: 0 },
-    { q: "17. Чтобы напечатать документ, нажмите…", a: ["Ctrl+S", "Ctrl+P", "Ctrl+O", "Ctrl+Shift+P"], c: 1 },
-    { q: "18. Где можно настроить поля страницы?", a: ["Главная", "Разметка страницы", "Вставка", "Вид"], c: 1 },
-    { q: "19. Как изменить ориентацию страницы?", a: ["Главная", "Разметка → Ориентация", "Вставка", "Ссылки"], c: 1 },
-    { q: "20. Как создать новый документ?", a: ["Ctrl+N", "Ctrl+O", "Ctrl+Shift+S", "Ctrl+D"], c: 0 },
+  <div class="card question" data-q="8">
+    <div class="q-title">8. Какая вкладка отвечает за интервалы и отступы абзацев?</div>
+    <label class="option"><input type="radio" name="q8" value="A"> A. Вставка</label>
+    <label class="option"><input type="radio" name="q8" value="B"> B. Ссылки</label>
+    <label class="option"><input type="radio" name="q8" value="C"> C. Главная</label>
+    <label class="option"><input type="radio" name="q8" value="D"> D. Макет</label>
+  </div>
 
-    { q: "21. Что делает функция «жирный»?", a: ["Увеличивает размер", "Выделяет текст жирным", "Меняет цвет", "Убирает стиль"], c: 1 },
-    { q: "22. Где находится функция 'Нумерованный список'?", a: ["Вставка", "Главная → Абзац", "Рецензирование", "Ссылки"], c: 1 },
-    { q: "23. Как вставить фигуру?", a: ["Главная", "Вставка → Фигуры", "Разметка", "Вид"], c: 1 },
-    { q: "24. Как включить линейку?", a: ["Вставка", "Вид → Линейка", "Главная", "Ссылки"], c: 1 },
-    { q: "25. Как изменить цвет текста?", a: ["Главная", "Вид", "Ссылки", "Разметка"], c: 0 },
+  <div class="card question" data-q="9">
+    <div class="q-title">9. Что такое колонтитулы?</div>
+    <label class="option"><input type="radio" name="q9" value="A"> A. Нумерация страниц</label>
+    <label class="option"><input type="radio" name="q9" value="B"> B. Верхняя и нижняя служебная область страницы</label>
+    <label class="option"><input type="radio" name="q9" value="C"> C. Название документа</label>
+    <label class="option"><input type="radio" name="q9" value="D"> D. Автотекст</label>
+  </div>
 
-    { q: "26. Как вставить колонтитулы?", a: ["Вставка → Колонтитулы", "Главная", "Разметка", "Рецензирование"], c: 0 },
-    { q: "27. Как вставить гиперссылку?", a: ["Ctrl+K", "Ctrl+H", "Ctrl+Shift+U", "Alt+K"], c: 0 },
-    { q: "28. Как вставить текстовое поле?", a: ["Главная", "Вставка → Текстовое поле", "Вид", "Разметка"], c: 1 },
-    { q: "29. Как изменить интервал между буквами?", a: ["Главная → Шрифт → Дополнительно", "Вставка", "Вид", "Разметка"], c: 0 },
-    { q: "30. Где включить режим «отображение скрытых символов»?", a: ["Главная → ¶", "Вставка", "Вид", "Разметка"], c: 0 },
-];
+  <div class="card question" data-q="10">
+    <div class="q-title">10. Как вставить номер страницы?</div>
+    <label class="option"><input type="radio" name="q10" value="A"> A. Главная → Нумерация</label>
+    <label class="option"><input type="radio" name="q10" value="B"> B. Вставка → Номер страницы</label>
+    <label class="option"><input type="radio" name="q10" value="C"> C. Макет → Разрывы</label>
+    <label class="option"><input type="radio" name="q10" value="D"> D. Вид → Страницы</label>
+  </div>
 
-function loadQuestions() {
-    const container = document.getElementById("questions");
-    questionsData.forEach((q, i) => {
-        let html = `<div class='question'><p>${q.q}</p>`;
-        q.a.forEach((ans, idx) => {
-            html += `<label>
-                <input type='radio' name='q${i}' value='${idx}'> ${ans}
-            </label><br>`;
-        });
-        html += "</div>";
-        container.innerHTML += html;
-    });
-}
+  <div class="card question" data-q="11">
+    <div class="q-title">11. Какой объект относится к графическим?</div>
+    <label class="option"><input type="radio" name="q11" value="A"> A. Параграф</label>
+    <label class="option"><input type="radio" name="q11" value="B"> B. Таблица</label>
+    <label class="option"><input type="radio" name="q11" value="C"> C. Фигура</label>
+    <label class="option"><input type="radio" name="q11" value="D"> D. Абзац</label>
+  </div>
 
-loadQuestions();
+  <div class="card question" data-q="12">
+    <div class="q-title">12. Для чего используется вкладка «Рецензирование»?</div>
+    <label class="option"><input type="radio" name="q12" value="A"> A. Для печати</label>
+    <label class="option"><input type="radio" name="q12" value="B"> B. Для проверки правописания, комментариев, рецензий</label>
+    <label class="option"><input type="radio" name="q12" value="C"> C. Для вставки изображений</label>
+    <label class="option"><input type="radio" name="q12" value="D"> D. Для изменения полей документа</label>
+  </div>
 
-function calculateScore() {
-    let fio = document.getElementById("fio").value.trim();
-    let group = document.getElementById("group").value.trim();
+  <div class="card question" data-q="13">
+    <div class="q-title">13. Что делает комбинация Ctrl + P?</div>
+    <label class="option"><input type="radio" name="q13" value="A"> A. Вставляет</label>
+    <label class="option"><input type="radio" name="q13" value="B"> B. Печатает документ</label>
+    <label class="option"><input type="radio" name="q13" value="C"> C. Сохраняет</label>
+    <label class="option"><input type="radio" name="q13" value="D"> D. Удаляет</label>
+  </div>
 
-    if (!fio || !group) {
-        alert("Пожалуйста, заполните ФИО и группу!");
-        return;
-    }
+  <div class="card question" data-q="14">
+    <div class="q-title">14. Как изменить ориентацию страницы?</div>
+    <label class="option"><input type="radio" name="q14" value="A"> A. Вставка → Параметры</label>
+    <label class="option"><input type="radio" name="q14" value="B"> B. Макет → Ориентация</label>
+    <label class="option"><input type="radio" name="q14" value="C"> C. Главная → Формат</label>
+    <label class="option"><input type="radio" name="q14" value="D"> D. Ссылки → Параметры страницы</label>
+  </div>
 
-    let score = 0;
-    const total = questionsData.length;
+  <div class="card question" data-q="15">
+    <div class="q-title">15. Что делает функция «Перенос текста»?</div>
+    <label class="option"><input type="radio" name="q15" value="A"> A. Переносит слова без разделения</label>
+    <label class="option"><input type="radio" name="q15" value="B"> B. Делает перенос строк вручную</label>
+    <label class="option"><input type="radio" name="q15" value="C"> C. Позволяет обходить объект текстом</label>
+    <label class="option"><input type="radio" name="q15" value="D"> D. Удаляет пробелы</label>
+  </div>
 
-    questionsData.forEach((q, i) => {
-        let userAnswer = document.querySelector(`input[name='q${i}']:checked`);
-        if (userAnswer && parseInt(userAnswer.value) === q.c) {
-            score++;
+  <div class="card question" data-q="16">
+    <div class="q-title">16. В Word можно вставить:</div>
+    <label class="option"><input type="radio" name="q16" value="A"> A. Только текст</label>
+    <label class="option"><input type="radio" name="q16" value="B"> B. Текст и таблицы</label>
+    <label class="option"><input type="radio" name="q16" value="C"> C. Текст, таблицы, изображения, графики</label>
+    <label class="option"><input type="radio" name="q16" value="D"> D. Только изображения</label>
+  </div>
+
+  <div class="card question" data-q="17">
+    <div class="q-title">17. Как называется расстояние между строками?</div>
+    <label class="option"><input type="radio" name="q17" value="A"> A. Интервал</label>
+    <label class="option"><input type="radio" name="q17" value="B"> B. Массив</label>
+    <label class="option"><input type="radio" name="q17" value="C"> C. Табуляция</label>
+    <label class="option"><input type="radio" name="q17" value="D"> D. Вставка</label>
+  </div>
+
+  <div class="card question" data-q="18">
+    <div class="q-title">18. Гиперссылка — это:</div>
+    <label class="option"><input type="radio" name="q18" value="A"> A. Элемент для вставки фото</label>
+    <label class="option"><input type="radio" name="q18" value="B"> B. Ссылка на веб-страницу, файл или место в документе</label>
+    <label class="option"><input type="radio" name="q18" value="C"> C. Специальный шрифт</label>
+    <label class="option"><input type="radio" name="q18" value="D"> D. Вид списка</label>
+  </div>
+
+  <div class="card question" data-q="19">
+    <div class="q-title">19. Как вставить сноску?</div>
+    <label class="option"><input type="radio" name="q19" value="A"> A. Главная → Вставка</label>
+    <label class="option"><input type="radio" name="q19" value="B"> B. Ссылки → Вставить сноску</label>
+    <label class="option"><input type="radio" name="q19" value="C"> C. Вставка → Сноска</label>
+    <label class="option"><input type="radio" name="q19" value="D"> D. Макет → Сноска</label>
+  </div>
+
+  <div class="card question" data-q="20">
+    <div class="q-title">20. Что делает команда «Проверка правописания»?</div>
+    <label class="option"><input type="radio" name="q20" value="A"> A. Выделяет текст</label>
+    <label class="option"><input type="radio" name="q20" value="B"> B. Проверяет ошибки</label>
+    <label class="option"><input type="radio" name="q20" value="C"> C. Вставляет комментарии</label>
+    <label class="option"><input type="radio" name="q20" value="D"> D. Печатает текст</label>
+  </div>
+
+  <div class="card question" data-q="21">
+    <div class="q-title">21. Как вставить разрыв страницы?</div>
+    <label class="option"><input type="radio" name="q21" value="A"> A. Главная → Разрыв</label>
+    <label class="option"><input type="radio" name="q21" value="B"> B. Макет → Разрыв страницы</label>
+    <label class="option"><input type="radio" name="q21" value="C"> C. Вставка → Разрыв</label>
+    <label class="option"><input type="radio" name="q21" value="D"> D. Вид → Разрыв</label>
+  </div>
+
+  <div class="card question" data-q="22">
+    <div class="q-title">22. Как изменить размер полей страницы?</div>
+    <label class="option"><input type="radio" name="q22" value="A"> A. Главная → Поля</label>
+    <label class="option"><input type="radio" name="q22" value="B"> B. Макет → Поля</label>
+    <label class="option"><input type="radio" name="q22" value="C"> C. Вставка → Поля</label>
+    <label class="option"><input type="radio" name="q22" value="D"> D. Ссылки → Поля</label>
+  </div>
+
+  <div class="card question" data-q="23">
+    <div class="q-title">23. Горячие клавиши копирования текста:</div>
+    <label class="option"><input type="radio" name="q23" value="A"> A. Ctrl + V</label>
+    <label class="option"><input type="radio" name="q23" value="B"> B. Ctrl + C</label>
+    <label class="option"><input type="radio" name="q23" value="C"> C. Ctrl + X</label>
+    <label class="option"><input type="radio" name="q23" value="D"> D. Ctrl + K</label>
+  </div>
+
+  <div class="card question" data-q="24">
+    <div class="q-title">24. Чтобы выделить одно слово, нужно:</div>
+    <label class="option"><input type="radio" name="q24" value="A"> A. Ctrl + щелчок</label>
+    <label class="option"><input type="radio" name="q24" value="B"> B. Один щелчок</label>
+    <label class="option"><input type="radio" name="q24" value="C"> C. Два щелчка</label>
+    <label class="option"><input type="radio" name="q24" value="D"> D. Три щелчка</label>
+  </div>
+
+  <div class="card question" data-q="25">
+    <div class="q-title">25. Как вставить символ или специальный знак?</div>
+    <label class="option"><input type="radio" name="q25" value="A"> A. Вставка → Символ</label>
+    <label class="option"><input type="radio" name="q25" value="B"> B. Главная → Символ</label>
+    <label class="option"><input type="radio" name="q25" value="C"> C. Макет → Символ</label>
+    <label class="option"><input type="radio" name="q25" value="D"> D. Вид → Символ</label>
+  </div>
+
+  <div class="card question" data-q="26">
+    <div class="q-title">26. Как изменить цвет текста?</div>
+    <label class="option"><input type="radio" name="q26" value="A"> A. Главная → Шрифт</label>
+    <label class="option"><input type="radio" name="q26" value="B"> B. Вставка → Цвет</label>
+    <label class="option"><input type="radio" name="q26" value="C"> C. Макет → Абзац</label>
+    <label class="option"><input type="radio" name="q26" value="D"> D. Вид → Интервал</label>
+  </div>
+
+  <div class="card question" data-q="27">
+    <div class="q-title">27. Какую функцию выполняют стили?</div>
+    <label class="option"><input type="radio" name="q27" value="A"> A. Устанавливают форматирование текста по шаблону</label>
+    <label class="option"><input type="radio" name="q27" value="B"> B. Добавляют изображения</label>
+    <label class="option"><input type="radio" name="q27" value="C"> C. Настраивают печать</label>
+    <label class="option"><input type="radio" name="q27" value="D"> D. Создают таблицы</label>
+  </div>
+
+  <div class="card question" data-q="28">
+    <div class="q-title">28. Что делает Ctrl + X?</div>
+    <label class="option"><input type="radio" name="q28" value="A"> A. Копирует</label>
+    <label class="option"><input type="radio" name="q28" value="B"> B. Вырезает</label>
+    <label class="option"><input type="radio" name="q28" value="C"> C. Вставляет</label>
+    <label class="option"><input type="radio" name="q28" value="D"> D. Возвращает</label>
+  </div>
+
+  <div class="card question" data-q="29">
+    <div class="q-title">29. Как сделать маркированный список?</div>
+    <label class="option"><input type="radio" name="q29" value="A"> A. Главная → Маркеры</label>
+    <label class="option"><input type="radio" name="q29" value="B"> B. Вставка → Маркеры</label>
+    <label class="option"><input type="radio" name="q29" value="C"> C. Макет → Абзац</label>
+    <label class="option"><input type="radio" name="q29" value="D"> D. Вид → Маркеры</label>
+  </div>
+
+  <div class="card question" data-q="30">
+    <div class="q-title">30. Как включить отображение невидимых символов (пробелы, Enter)?</div>
+    <label class="option"><input type="radio" name="q30" value="A"> A. Главная → ¶</label>
+    <label class="option"><input type="radio" name="q30" value="B"> B. Вставка → ¶</label>
+    <label class="option"><input type="radio" name="q30" value="C"> C. Макет → ¶</label>
+    <label class="option"><input type="radio" name="q30" value="D"> D. Вид → ¶</label>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="check">Проверить</button>
+    <button type="button" id="show-answers" class="secondary">Показать ответы</button>
+    <button type="button" id="reset" class="secondary">Сбросить</button>
+    <button type="button" id="download" class="secondary">Скачать HTML</button>
+  </div>
+
+  <div id="result" class="card" style="display:none"></div>
+
+  </form>
+
+  <footer>Создано для обучения. Можешь сохранить этот файл и открывать в браузере офлайн.</footer>
+
+  <script>
+    (function(){
+      const answers = {
+        q1: 'B', q2: 'B', q3: 'B', q4: 'B', q5: 'A', q6: 'A', q7: 'B', q8: 'D', q9: 'B', q10: 'B',
+        q11: 'C', q12: 'B', q13: 'B', q14: 'B', q15: 'C', q16: 'C', q17: 'A', q18: 'B', q19: 'B', q20: 'B',
+        q21: 'B', q22: 'B', q23: 'B', q24: 'C', q25: 'A', q26: 'A', q27: 'A', q28: 'B', q29: 'A', q30: 'A'
+      };
+
+      const form = document.getElementById('quiz');
+      const resultBox = document.getElementById('result');
+      const checkBtn = document.getElementById('check');
+      const showAnswersBtn = document.getElementById('show-answers');
+      const resetBtn = document.getElementById('reset');
+      const downloadBtn = document.getElementById('download');
+
+      function grade(){
+        let total = 0; let correct = 0; let unanswered = 0;
+        for(let i=1;i<=30;i++){
+          total++;
+          const name = 'q'+i;
+          const radios = form.elements[name];
+          let val = null;
+          if(!radios) continue;
+          if(radios.length){
+            for(const r of radios){ if(r.checked) val = r.value; }
+          } else { if(radios.checked) val = radios.value; }
+
+          const card = document.querySelector('[data-q="'+i+'"]');
+          card.classList.remove('correct','wrong');
+
+          if(val === null){ unanswered++; card.classList.add('wrong'); }
+          else if(val === answers[name]){ correct++; card.classList.add('correct'); }
+          else { card.classList.add('wrong'); }
         }
-    });
+        return {total, correct, unanswered};
+      }
 
-    let percentage = Math.round((score / total) * 100);
+      checkBtn.addEventListener('click', ()=>{
+        const {total, correct, unanswered} = grade();
+        resultBox.style.display='block';
+        const percent = Math.round((correct/total)*100);
+        resultBox.innerHTML = '<strong>Результат:</strong> '+correct+' из '+total+' ('+percent+'%)'<
+          +"<div class='explain'>Нажми «Показать ответы», чтобы увидеть правильные варианты и объяснения.</div>";
+        window.scrollTo({top: resultBox.offsetTop-20, behavior:'smooth'});
+      });
 
-    document.getElementById("result").innerHTML =
-        `ФИО: <b>${fio}</b><br>
-         Группа: <b>${group}</b><br><br>
-         Ваш результат: <b>${percentage}%</b>`;
-}
-</script>
+      showAnswersBtn.addEventListener('click', ()=>{
+        // Reveal correct answers visually and show labels
+        for(let i=1;i<=30;i++){
+          const name = 'q'+i; const correct = answers[name];
+          const radios = form.elements[name];
+          const card = document.querySelector('[data-q="'+i+'"]');
+          // remove previous marks
+          const opts = card.querySelectorAll('label.option');
+          opts.forEach((opt, idx)=>{
+            opt.classList.remove('correct','wrong');
+            const input = opt.querySelector('input');
+            if(input.value === correct){ opt.classList.add('correct'); }
+            // mark selected wrong
+            if(input.checked && input.value !== correct){ opt.classList.add('wrong'); }
+          });
+        }
+        // show a short answer key
+        let keyHtml = '<strong>Ключ ответов:</strong><br><div class="small">';
+        for(let i=1;i<=30;i++){ keyHtml += i+': '+answers['q'+i] + (i%10===0? '<br>':' — '); }
+        keyHtml += '</div>';
+        resultBox.style.display='block';
+        resultBox.innerHTML = keyHtml;
+        window.scrollTo({top: resultBox.offsetTop-20, behavior:'smooth'});
+      });
 
+      resetBtn.addEventListener('click', ()=>{
+        form.reset();
+        resultBox.style.display='none';
+        document.querySelectorAll('.card.question').forEach(c=>{ c.classList.remove('correct','wrong'); });
+      });
+
+      downloadBtn.addEventListener('click', ()=>{
+        const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'word_quiz.html';
+        document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(url);
+      });
+
+    })();
+  </script>
+    <script>
+        async function sendToServer(fio, group, percent, answers) {
+            await fetch("https://script.google.com/macros/s/AKfycbw-Zxbt0jEUdhCg5fHqc30PVCJmM17FjDwxcTcjDaxHEHLXlWHQqmxvW2HAkYBPcX5J/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fio, group, percent, answers })
+            });
+        }
+
+        // ВСТАВЬТЕ ЭТУ ЧАСТЬ В КОНЕЦ ВАШЕЙ ФУНКЦИИ calculateScore()
+        // Пример:
+        // sendToServer(fio, group, percentage, allAnswers);
+    </script>
 </body>
 </html>
