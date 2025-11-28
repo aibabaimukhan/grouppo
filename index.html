@@ -130,21 +130,8 @@ function loadQuestions() {
         container.innerHTML += html;
     });
 }
-loadQuestions();
 
-// Отправка результатов на AppScript
-function sendToServer(fio, group, percent, answers) {
-    fetch("YOUR_WEBHOOK_URL", {   // <--- ВСТАВЬТЕ СЮДА ВАШ APP SCRIPT URL
-        method: "POST",
-        contentType: "application/json",
-        body: JSON.stringify({
-            fio: fio,
-            group: group,
-            percent: percent,
-            answers: answers
-        })
-    });
-}
+loadQuestions();
 
 function calculateScore() {
     let fio = document.getElementById("fio").value.trim();
@@ -157,15 +144,9 @@ function calculateScore() {
 
     let score = 0;
     const total = questionsData.length;
-    let answersList = "";
 
     questionsData.forEach((q, i) => {
         let userAnswer = document.querySelector(`input[name='q${i}']:checked`);
-        if (userAnswer) {
-            answersList += `${q.q} → Ответ: ${q.a[userAnswer.value]}\n`;
-        } else {
-            answersList += `${q.q} → Нет ответа\n`;
-        }
         if (userAnswer && parseInt(userAnswer.value) === q.c) {
             score++;
         }
@@ -173,10 +154,6 @@ function calculateScore() {
 
     let percentage = Math.round((score / total) * 100);
 
-    // Отправляем в AppScript
-    sendToServer(fio, group, percentage, answersList);
-
-    // Показываем на экране
     document.getElementById("result").innerHTML =
         `ФИО: <b>${fio}</b><br>
          Группа: <b>${group}</b><br><br>
